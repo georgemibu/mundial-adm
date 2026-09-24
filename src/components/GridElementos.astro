@@ -1,0 +1,140 @@
+<div class="elementos-container">
+    <div class="elemento">
+        <div class="elemento-img">
+            <img src="./objetivos.png" alt="" />
+        </div>
+        <div class="elemento-texto">
+            <h3>OBJETIVOS</h3>
+            <p>
+                Seleccionar al mejor equipo que <br />representará a cada
+                universidad<br />
+                en la Copa del Mundo de <br /> Estudiantes de Administración <br
+                /> durante CONAMERCO 2026.
+            </p>
+        </div>
+    </div>
+
+    <img class="flecha-costado" src="./triangulito.png" alt="" />
+
+    <div class="elemento">
+        <div class="elemento-img">
+            <img src="./participantes.png" alt="" />
+        </div>
+        <div class="elemento-texto">
+            <h3>PARTICIPANTES</h3>
+            <p class="texto-claro"><i>Podrán participar exclusivamente:</i></p>
+            <ul>
+                <li>
+                    Estudiantes regulares de la carrera de Licenciados de
+                    Administración. <b>Ley 8765/14</b>
+                </li>
+                <li>Carreras afines autorizadas por cada universidad.</li>
+                <li>Cada equipo deberá estar dirigido por un coordinador.</li>
+            </ul>
+        </div>
+    </div>
+
+    <img class="flecha-costado" src="./triangulito.png" alt="" />
+</div>
+
+<div class="elementos-container">
+    <div class="elemento">
+        <div class="elemento-img">
+            <img src="./duracion.png" alt="" />
+        </div>
+        <div class="elemento-texto">
+            <h3>DURACIÓN</h3>
+            <p>"Dos etapas de 30 días cada una.</p>
+        </div>
+    </div>
+
+    <img class="flecha-costado" src="./triangulito.png" alt="" />
+
+    <div class="elemento">
+        <div class="elemento-img">
+            <img src="./formacion-equipos.png" alt="" />
+        </div>
+        <div class="elemento-texto">
+            <h3>FORMACIÓN DE EQUIPOS</h3>
+            <p class="texto-claro">
+                <i>Cada equipo deberá estar integrado por: </i>
+            </p>
+            <ul>
+                <li>1 Especialista en Marketing.</li>
+                <li>1 Especialista en Redes Sociales.</li>
+                <li>1 Especialista en Recursos Humanos.</li>
+                <li>1 Especialista en Logística.</li>
+                <li>1 Especialista en Procesos Organizacionales.</li>
+                <li>
+                    1 Capitán. <b
+                        >(Profesional matriculado de las Ciencias de la
+                        Administración)</b
+                    >
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <img class="flecha-costado final" src="./triangulito.png" alt="" />
+</div>
+
+<style>
+    .elementos-container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: start;
+        gap: 50px;
+        margin-top: 60px;
+        flex-wrap: wrap;
+    }
+
+    .elemento {
+        width: 344px;
+        display: flex;
+        justify-content: center;
+        align-items: start;
+        gap: 15px;
+    }
+    .elemento-img {
+        width: 105px;
+        height: 113px;
+        min-width: 105px;
+        min-height: 113px;
+        border: 1px solid #d7a657;
+        border-radius: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);
+        object-fit: contain;
+    }
+    .elemento-img img {
+        width: 83px;
+        height: 67px;
+        object-fit: contain;
+    }
+    .elemento-texto h3 {
+        font-family: "Poppins", sans-serif;
+        font-size: 16px;
+        font-weight: 900;
+    }
+    .elemento-texto p {
+        font-family: "Roboto", sans-serif;
+        font-size: 16px;
+        font-weight: 200;
+    }
+
+    .elemento-texto ul li {
+        font-family: "Roboto", sans-serif;
+        font-size: 16px;
+        font-weight: 200;
+        margin-left: 40px;
+    }
+    .flecha-costado {
+        margin-top: 50px;
+    }
+    .flecha-costado.final {
+        visibility: hidden;
+    }
+</style>

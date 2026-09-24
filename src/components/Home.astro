@@ -1,0 +1,465 @@
+<section>
+    <div class="left">
+        <h1>
+            MUNDIAL DE ESTUDIANTES<br />
+            DE ADMINISTRACIÓN
+        </h1>
+        <div class="contenedor">
+            <h2>CREÁ - COMPETÍ - REPRESENTÁ</h2>
+        </div>
+        <p>
+            Una competencia latinoamericana que desafía a estudiantes <br />
+            de Ciencias de la Administración a transformar sus conocimientos en
+            <br />una startup escalable y representar a su universidad en la
+            Gran Final.
+        </p>
+        <button type="button" class="btn" id="open-participa-modal">QUIERO<br /> PARTICIPAR</button>
+    </div>
+    <div class="right">
+        <div class="imagenes">
+            <div class="imagen imagen-1">
+                <img src="./homeimage3.png" alt="Imagen 3" />
+            </div>
+            <div class="imagen imagen-2">
+                <img src="./homeimage2.png" alt="Imagen 2" />
+            </div>
+            <div class="imagen imagen-3">
+                <img src="./homeimage1.png" alt="Imagen 1" />
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="modal-backdrop" id="participa-modal" aria-hidden="true">
+    <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="participa-title">
+        <div class="modal-header">
+            <button type="button" class="icon-button" aria-label="Volver" data-close-modal>
+                <span aria-hidden="true">&#8592;</span>
+            </button>
+            <h3 id="participa-title">Participa</h3>
+            <button type="button" class="icon-button close-button" aria-label="Cerrar formulario" data-close-modal>
+                <span aria-hidden="true">&#215;</span>
+            </button>
+        </div>
+
+        <div class="modal-step"></div>
+
+        <form id="participa-form">
+            <div class="field-group">
+                <label for="nombre-apellido">Nombre y apellido</label>
+                <input id="nombre-apellido" name="nombre-apellido" type="text" placeholder="Escribe" />
+            </div>
+
+            <div class="field-group">
+                <label for="celular">Celular de contacto</label>
+                <input id="celular" name="celular" type="tel" placeholder="Ej: +54 261 1234567" />
+            </div>
+
+            <div class="field-group">
+                <label for="email">E-mail personal o de tu universidad</label>
+                <input id="email" name="email" type="email" placeholder="Escribe" />
+            </div>
+
+            <div class="field-group">
+                <label for="universidad">Nombre de la universidad</label>
+                <input id="universidad" name="universidad" type="text" placeholder="Escribe" />
+            </div>
+
+            <div class="field-group">
+                <label for="rol">¿Eres estudiante, docente o miembro directivo de la universidad?</label>
+                <select id="rol" name="rol">
+                    <option value="">Seleccioná una opción</option>
+                    <option value="estudiante">Estudiante</option>
+                    <option value="docente">Docente</option>
+                    <option value="directivo">Miembro directivo</option>
+                </select>
+            </div>
+
+            <div class="field-group">
+                <label for="pais">País</label>
+                <input id="pais" name="pais" type="text" placeholder="Escribe" />
+            </div>
+
+            <div class="field-group">
+                <label for="localidad">Localidad</label>
+                <input id="localidad" name="localidad" type="text" placeholder="Escribe" />
+            </div>
+
+            <button type="submit" class="submit-btn">Enviar</button>
+        </form>
+    </div>
+</div>
+
+<div class="bottom">
+    <div class="imagenizquierda">
+        <img src="./hometrianguloizq.png" alt="Imagen 1" />
+    </div>
+    <div class="contenedor-centro">
+        <div class="contenedor-agenda">
+            <img src="./homeubicacion.png" alt="" />
+            <h3>Mendoza, Argentina</h3>
+        </div>
+        <div class="contenedor-agenda">
+            <img src="./homecalendario.png" alt="" />
+            <h3>Gran Final - 5 de noviembre</h3>
+        </div>
+        <div class="contenedor-agenda">
+            <img src="./homeevento.png" alt="" />
+            <h3>CONAMERCO 2026</h3>
+        </div>
+        <img src="./separador.png" alt="" class="separador" />
+    </div>
+    <div class="imagenderecha">
+        <img src="./hometrianguloizq.png" alt="Imagen 1" />
+    </div>
+</div>
+
+<script>
+    const modal = document.getElementById('participa-modal');
+    const openButton = document.getElementById('open-participa-modal');
+    const closeButtons = document.querySelectorAll('[data-close-modal]');
+    const form = document.getElementById('participa-form');
+
+    const openModal = () => {
+        modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('modal-open');
+    };
+
+    const closeModal = () => {
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('modal-open');
+    };
+
+    openButton.addEventListener('click', openModal);
+
+    closeButtons.forEach((button) => {
+        button.addEventListener('click', closeModal);
+    });
+
+    modal.addEventListener('click', (event) => {
+        if (event.target === modal) {
+            closeModal();
+        }
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && modal.classList.contains('is-open')) {
+            closeModal();
+        }
+    });
+
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        form.reset();
+        closeModal();
+    });
+</script>
+
+<style>
+    section {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        padding-top: 70px;
+    }
+    .left {
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .right {
+        width: 40%;
+    }
+
+    h1 {
+        font-size: 40px;
+        font-family: "Poppins", sans-serif;
+        font-weight: 800;
+        letter-spacing: 1.8;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    .contenedor {
+        width: 339px;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 16px;
+        background-color: #d7a657;
+        margin-bottom: 20px;
+    }
+    h2 {
+        text-align: center;
+        font-size: 20px;
+        font-family: "Poppins", sans-serif;
+        font-weight: 600;
+    }
+    p {
+        font-size: 16px;
+        text-align: center;
+        width: 80%;
+        margin-bottom: 30px;
+        font-weight: 300;
+    }
+
+    .imagenes {
+        width: 420px;
+        height: 300px;
+        position: relative;
+        margin-left: 28px;
+    }
+
+    .imagen {
+        width: 256px;
+        height: 230px;
+        position: absolute;
+        border-radius: 12px;
+        margin-top: 0px;
+    }
+
+    /* Imagen de atrás */
+    .imagen-1 {
+        top: 0;
+        right: 0;
+    }
+
+    /* Imagen del medio */
+    .imagen-2 {
+        top: 38px;
+        right: 64px;
+    }
+
+    /* Imagen de adelante */
+    .imagen-3 {
+        top: 75px;
+        left: 30px;
+    }
+
+    .btn,
+    .submit-btn {
+        width: 145px;
+        height: 58px;
+        background-color: transparent;
+        border: 4px solid #d7a657;
+        border-radius: 16px;
+        font-family: "Poppins", sans-serif;
+        font-weight: 800;
+        cursor: pointer;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn:hover,
+    .submit-btn:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 8px 20px rgba(21, 33, 61, 0.12);
+    }
+
+    .bottom {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .imagenizquierda {
+        width: 33%;
+    }
+    .imagenderecha {
+        width: 33%;
+    }
+    .imagenizquierda img {
+        width: 500px;
+    }
+    .imagenderecha img {
+        transform: scaleX(-1);
+        width: 500px;
+    }
+    .imagenizquierda img,
+    .imagenderecha img {
+        max-width: 100%;
+        width: 100%;
+    }
+    .contenedor-centro {
+        width: 33%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .contenedor-agenda {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        margin-bottom: 16px;
+    }
+    .contenedor-agenda h3 {
+        width: 250px;
+        margin: 0;
+        font-family: "Roboto", sans-serif;
+        font-weight: 900;
+        font-size: 16px;
+    }
+    .contenedor-agenda img {
+        width: 18px;
+        height: 18px;
+    }
+    .separador {
+        margin-top: 16px;
+    }
+
+    .modal-backdrop {
+        position: fixed;
+        inset: 0;
+        background: rgba(10, 14, 20, 0.32);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.25s ease;
+        z-index: 30;
+    }
+
+    .modal-backdrop.is-open {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .modal-panel {
+        width: min(92vw, 620px);
+        background: #f7f3ef;
+        border: 2px solid #d7a657;
+        border-radius: 28px;
+        box-shadow: 0 18px 50px rgba(11, 20, 35, 0.22);
+        padding-bottom: 18px;
+    }
+
+    .modal-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 18px 18px 8px;
+    }
+
+    .modal-header h3 {
+        font-size: clamp(2rem, 4vw, 3rem);
+        font-family: "Poppins", sans-serif;
+        font-weight: 700;
+        color: #101820;
+        text-align: center;
+        flex: 1;
+    }
+
+    .icon-button {
+        background: transparent;
+        border: none;
+        color: #0d1b2a;
+        font-size: 2.5rem;
+        line-height: 1;
+        cursor: pointer;
+        width: 44px;
+        height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .close-button {
+        font-size: 3rem;
+    }
+
+    .modal-step {
+        width: calc(100% - 60px);
+        margin: 0 auto 8px;
+        padding: 10px 0 14px;
+        border-bottom: 3px solid #d7a657;
+        color: #d7a657;
+        font-size: 1.2rem;
+        font-weight: 700;
+        text-align: center;
+        letter-spacing: 0.1em;
+    }
+
+    #participa-form {
+        width: calc(100% - 40px);
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .field-group {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .field-group label {
+        color: #0d1b2a;
+        font-size: 1.1rem;
+        font-weight: 700;
+        line-height: 1.3;
+    }
+
+    .field-group input,
+    .field-group select {
+        width: 100%;
+        min-height: 54px;
+        background: #f1eee9;
+        border: 2px solid #d7a657;
+        border-radius: 18px;
+        padding: 0 16px;
+        font-size: 1.05rem;
+        color: #101820;
+        outline: none;
+    }
+
+    .field-group input::placeholder {
+        color: #6c6b68;
+    }
+
+    .field-group select {
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        background-image: linear-gradient(45deg, transparent 50%, #0d1b2a 50%), linear-gradient(135deg, #0d1b2a 50%, transparent 50%);
+        background-position: calc(100% - 20px) calc(50% - 3px), calc(100% - 14px) calc(50% - 3px);
+        background-size: 6px 6px, 6px 6px;
+        background-repeat: no-repeat;
+    }
+
+    .submit-btn {
+        width: min(100%, 220px);
+        height: 56px;
+        margin: 12px auto 0;
+        border: none;
+        background: #0d1b2a;
+        color: #ffffff;
+        border-radius: 16px;
+        font-size: 1.1rem;
+        font-weight: 800;
+        font-family: "Poppins", sans-serif;
+    }
+
+    body.modal-open {
+        overflow: hidden;
+    }
+
+    @media (max-width: 768px) {
+        .modal-panel {
+            width: min(92vw, 520px);
+        }
+
+        .modal-header h3 {
+            font-size: 2.2rem;
+        }
+
+        .field-group label {
+            font-size: 1rem;
+        }
+    }
+</style>

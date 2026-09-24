@@ -1,0 +1,127 @@
+---
+import NovedadesBox from "../components/NovedadesBox.astro";
+---
+
+<section id="novedades">
+    <div class="titulo">
+        <h2>Novedades</h2>
+    </div>
+
+    <NovedadesBox />
+
+    <div class="universidades">
+        <h2>¿Querés saber si tu Universidad esta participando?</h2>
+        <div class="container-universidades-top">
+            <div class="container-universidad">
+                <img src="./Universidad1.png" alt="" />
+                <h3>Universidad <br />Champagnat</h3>
+            </div>
+            <div class="container-universidad">
+                <img src="./Universidad2.png" alt="" />
+                <h3>UNCuyo</h3>
+            </div>
+            <div class="container-universidad">
+                <img src="./Universidad3.png" alt="" />
+                <h3>
+                    Universidad <br />
+                    Universitario <br />
+                    de Ciencias <br />
+                    Empresariales
+                </h3>
+            </div>
+            <div class="container-universidad">
+                <img src="./Universidad4.png" alt="" />
+                <h3>
+                    Universidad <br />
+                    del <br />
+                    Aconcagua
+                </h3>
+            </div>
+            <div class="container-universidad">
+                <img src="./Universidad5.png" alt="" />
+                <h3>
+                    Universidad <br />
+                    Juan Agustín <br />
+                    Maza
+                </h3>
+            </div>
+        </div>
+        <div class="container-universidades-bottom">
+            <div class="container-universidad">
+                <img src="./Universidad6.png" alt="" />
+                <h3>
+                    Universidad <br />
+                    Siglo 21
+                </h3>
+            </div>
+            <div class="container-universidad">
+                <img src="./Universidad7.png" alt="" />
+                <h3>
+                    Universidad <br />
+                    Católica <br />
+                    Santiago del <br />
+                    Estero
+                </h3>
+            </div>
+            <div class="container-universidad">
+                <img src="./Universidad8.png" alt="" />
+                <h3>
+                    Instituto <br />
+                    Tecnológico <br />
+                    Universitario
+                </h3>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .titulo h2 {
+        text-align: center;
+        margin-top: 60px;
+        font-family: "Poppins", sans-serif;
+        font-size: 40px;
+        font-weight: 700;
+    }
+    .universidades {
+        width: 100%;
+    }
+    .universidades h2 {
+        font-family: "Poppins", sans-serif;
+        font-weight: 700;
+        font-size: 40px;
+        text-align: center;
+        margin-bottom: 40px;
+    }
+    .container-universidades-top {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 40px;
+    }
+    .container-universidades-bottom {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 40px;
+
+        margin-top: 30px;
+    }
+
+    .container-universidad {
+        height: 209px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+    }
+    .container-universidad img {
+        width: 125px;
+        height: 116px;
+    }
+    .container-universidad h3 {
+        font-size: 16px;
+    }
+</style>

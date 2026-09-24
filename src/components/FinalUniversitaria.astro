@@ -1,0 +1,201 @@
+<div class="contenedor-top">
+    <div class="imagenizquierda">
+        <img src="./triangulobajo.png" alt="Imagen 1" />
+    </div>
+
+    <div class="contenedor-centro">
+        <h2>FINAL <br />INTERUNIVERSITARIA</h2>
+        <div class="container">
+            <div class="img-contenedor">
+                <div class="imagenes">
+                    <img
+                        class="cinco"
+                        src="./finalinteruniversitaria.png"
+                        alt=""
+                    />
+                    <div class="contenedor-base">
+                        <img
+                            class="base"
+                            src="./finalinteruniversitariatrophy.png"
+                            alt=""
+                        />
+                    </div>
+                </div>
+            </div>
+            <div class="left-final-inter">
+                <ul>
+                    <li><b>Semana 1 a 4:</b> 400 puntos</li>
+                    <li><b>Exposición:</b> 200 puntos</li>
+                    <li><b>Máxima puntuación: 600 <br />puntos.</b></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="imagenderecha">
+        <img src="./triangulobajo.png" alt="Imagen 1" />
+    </div>
+</div>
+
+<div class="gran-final-container">
+    <h2>LA GRAN FINAL <br />LATINOAMERICANA</h2>
+    <div class="gran-final-contenido">
+        <div class="cuadro-imagen">
+            <img src="./trophy.png" alt="" />
+        </div>
+        <div class="cuadro-contenido">
+            <ul>
+                <li>
+                    Presentación y exposición en <br />el Marco del XXVII <br
+                    />COMAMERCO
+                </li>
+                <li><b>Máxima puntuación: 100 puntos.</b></li>
+            </ul>
+        </div>
+    </div>
+    <img class="separador" src="./separador.png" alt="" />
+</div>
+
+<style>
+    .contenedor-top {
+        width: 100%;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-top: 80px;
+    }
+    .contenedor-centro {
+        display: flex;
+
+        flex-direction: column;
+        align-items: center;
+        margin-top: 30px;
+    }
+    .container {
+        width: 892px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 50px;
+        margin-top: 30px;
+    }
+    .contenedor-centro h2 {
+        font-family: "Poppins", sans-serif;
+        font-weight: 700;
+        font-size: 24px;
+        text-align: center;
+        margin-top: 60px;
+    }
+    .img-contenedor {
+        display: flex;
+        flex-direction: row;
+        border: 1px solid #d7a657;
+        border-radius: 15px;
+    }
+
+    .imagenes {
+        position: relative;
+        width: 105px;
+        height: 115px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);
+        border-radius: 15px;
+    }
+    .contenedor-base {
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);
+    }
+    .base {
+        width: 69px;
+        height: 94px;
+
+        position: absolute;
+        top: 15px;
+        left: 20px;
+    }
+
+    .cinco {
+        width: 50px;
+        height: 50px;
+
+        position: absolute;
+        top: -20;
+        left: -20;
+
+        z-index: 2;
+    }
+
+    .left-final-inter {
+        margin-top: 0px;
+    }
+
+    .left-final-inter ul li {
+        font-family: "Roboto", sans-serif;
+        font-size: 16px;
+    }
+    .imagenizquierda {
+        width: 13.4%;
+    }
+    .imagenderecha {
+        width: 13.4%;
+    }
+    .imagenizquierda img {
+        width: 250px;
+    }
+    .imagenderecha img {
+        transform: scaleX(-1);
+        width: 250px;
+    }
+    .imagenizquierda img,
+    .imagenderecha img {
+        max-width: 100%;
+        width: 100%;
+    }
+    .bottom {
+        display: flex;
+        width: 100%;
+    }
+
+    .gran-final-container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 100px;
+    }
+
+    .gran-final-container h2 {
+        font-family: "Poppins", sans-serif;
+        font-weight: 700;
+        font-size: 24px;
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .gran-final-contenido {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 50px;
+        padding-left: 200px;
+        padding-right: 200px;
+        margin-top: 20px;
+    }
+    .cuadro-imagen {
+        width: 101px;
+        height: 112px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #d7a657;
+        border-radius: 15px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);
+    }
+
+    .separador {
+        margin-top: 70px;
+    }
+</style>

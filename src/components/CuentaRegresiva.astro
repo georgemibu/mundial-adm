@@ -1,0 +1,177 @@
+<div class="cuenta-regresiva">
+    <h3>CUENTA REGRESIVA</h3>
+    <div class="cuenta-regresiva-caja">
+        <h4 class="numero" id="dias-restantes">50</h4>
+        <p>DÍAS</p>
+    </div>
+    <h4>Reglamento</h4>
+    <h5>TODO DESAFÍO TIENE SUS REGLAS</h5>
+    <p>
+        Conocé las bases que guiarán esta competencia: <b
+            >participación, etapas, evaluación y condiciones para llegar a la
+            gran final.
+        </b>
+    </p>
+</div>
+
+<div class="bottom">
+    <div class="imagenizquierda">
+        <img src="./hometrianguloizq.png" alt="Imagen 1" />
+    </div>
+    <div class="contenedor-centro">
+        <img src="./flechasabajo.png" alt="" />
+        <button>
+            <a
+                href="/REGLAMENTO - MUNDIAL DE ESTUDIANTES DE ADMINISTRACION 2026.pdf"
+                download
+                class="boton-descarga"
+            >
+                DESCARGAR <br />
+                REGLAMENTO
+            </a></button>
+
+        <img src="./separador.png" alt="" class="separador" />
+    </div>
+    <div class="imagenderecha">
+        <img src="./hometrianguloizq.png" alt="Imagen 1" />
+    </div>
+</div>
+
+<style>
+    .cuenta-regresiva {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 30px;
+    }
+    .cuenta-regresiva h3 {
+        font-family: "Poppins", sans-serif;
+        font-weight: 700;
+        font-size: 40px;
+    }
+    .cuenta-regresiva-caja {
+        width: 238px;
+        height: 213px;
+        border: 1px solid black;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+        background-color: #0d2547;
+        border-radius: 15px;
+    }
+    .cuenta-regresiva-caja p {
+        font-family: "Poppins", sans-serif;
+        font-size: 40px;
+        font-weight: 700;
+        color: white;
+        padding-bottom: 3px;
+    }
+    .cuenta-regresiva-caja h4 {
+        font-size: 128px;
+        font-family: "Poppins", sans-serif;
+        height: 100px;
+        color: #d7a657;
+        margin: 0;
+    }
+    h4 {
+        font-family: "Poppins", sans-serif;
+        font-size: 40px;
+        margin-top: 30px;
+    }
+    h5 {
+        font-family: "Roboto", sans-serif;
+        font-size: 24px;
+        font-weight: 400;
+        margin-top: 40px;
+    }
+    p {
+        font-family: "Roboto", sans-serif;
+        font-size: 16px;
+        font-weight: 400;
+        margin-top: 40px;
+        margin-bottom: 30px;
+    }
+
+    .bottom {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .imagenizquierda {
+        width: 33%;
+    }
+    .imagenderecha {
+        width: 33%;
+    }
+    .imagenizquierda img {
+        width: 500px;
+    }
+    .imagenderecha img {
+        transform: scaleX(-1);
+        width: 500px;
+    }
+    .imagenizquierda img,
+    .imagenderecha img {
+        max-width: 100%;
+        width: 100%;
+    }
+    .contenedor-centro {
+        width: 33%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .contenedor-centro button {
+        border: 1px solid #d7a657;
+        width: 146px;
+        height: 60px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);
+        background-color: transparent;
+        border-radius: 15px;
+        font-family: "Poppins", sans-serif;
+        font-weight: 900;
+        font-size: 16px;
+        margin-bottom: 30px;
+    }
+    .contenedor-centro button a {
+        font-family: "Poppins", sans-serif;
+        font-weight: 900;
+        font-size: 16px;
+        text-decoration: none;
+        color:black;
+    }
+    .contenedor-centro img {
+        margin-bottom: 10px;
+        margin-top: 10px;
+    }
+
+    .separador {
+        margin-top: 16px;
+    }
+</style>
+
+<script>
+    const fechaEvento = new Date("2026-11-05T00:00:00-03:00");
+
+    function actualizarContador() {
+        const ahora = new Date();
+        const diferencia = fechaEvento.getTime() - ahora.getTime();
+
+        const dias = Math.ceil(diferencia / (1000 * 60 * 60 * 24));
+
+        const contador = document.getElementById("dias-restantes");
+
+        if (contador) {
+            contador.textContent = dias > 0 ? dias.toString() : "0";
+        }
+    }
+
+    actualizarContador();
+
+    setInterval(actualizarContador, 1000 * 60 * 60);
+</script>

@@ -1,0 +1,315 @@
+---
+const novedades = [
+    {
+        imagen: "./novedades1.png",
+        titulo: "Bienvenida a la Academia",
+        resumen:
+            "Te damos la bienvenida a la Academia. En esta sección encontrarás el programa de cada uno de los módulos...",
+        contenido: `
+            <p>
+                Te damos la bienvenida a la Academia. En este espacio
+                podrás encontrar toda la información relacionada con
+                los módulos y actividades.
+            </p>
+
+            <p>
+                El programa está compuesto por diferentes encuentros
+                destinados a brindar herramientas para la formación
+                profesional.
+            </p>
+        `,
+    },
+
+    {
+        imagen: "./novedades1.png",
+        titulo: "Bienvenida a la Academia",
+        resumen:
+            "Te damos la bienvenida a la Academia. En esta sección encontrarás el programa de cada uno de los módulos...",
+        contenido: `
+            <p>
+                Te damos la bienvenida a la Academia. En este espacio
+                podrás encontrar toda la información relacionada con
+                los módulos y actividades.
+            </p>
+
+            <p>
+                El programa está compuesto por diferentes encuentros
+                destinados a brindar herramientas para la formación
+                profesional.
+            </p>
+        `,
+    },
+
+    {
+        imagen: "./novedades1.png",
+        titulo: "Bienvenida a la Academia",
+        resumen:
+            "Te damos la bienvenida a la Academia. En esta sección encontrarás el programa de cada uno de los módulos...",
+        contenido: `
+            <p>
+                Te damos la bienvenida a la Academia. En este espacio
+                podrás encontrar toda la información relacionada con
+                los módulos y actividades.
+            </p>
+
+            <p>
+                El programa está compuesto por diferentes encuentros
+                destinados a brindar herramientas para la formación
+                profesional.
+            </p>
+        `,
+    },
+
+    {
+        imagen: "./novedades1.png",
+        titulo: "Bienvenida a la Academia",
+        resumen:
+            "Te damos la bienvenida a la Academia. En esta sección encontrarás el programa de cada uno de los módulos...",
+        contenido: `
+            <p>
+                Te damos la bienvenida a la Academia. En este espacio
+                podrás encontrar toda la información relacionada con
+                los módulos y actividades.
+            </p>
+
+            <p>
+                El programa está compuesto por diferentes encuentros
+                destinados a brindar herramientas para la formación
+                profesional.
+            </p>
+        `,
+    },
+    {
+        imagen: "./novedades1.png",
+        titulo: "Bienvenida a la Academia",
+        resumen:
+            "Te damos la bienvenida a la Academia. En esta sección encontrarás el programa de cada uno de los módulos...",
+        contenido: `
+            <p>
+                Te damos la bienvenida a la Academia. En este espacio
+                podrás encontrar toda la información relacionada con
+                los módulos y actividades.
+            </p>
+
+            <p>
+                El programa está compuesto por diferentes encuentros
+                destinados a brindar herramientas para la formación
+                profesional.
+            </p>
+        `,
+    },
+
+    {
+        imagen: "./novedades1.png",
+        titulo: "Nuevo reglamento",
+        resumen:
+            "Ya se encuentra disponible el nuevo reglamento de la Academia.",
+        contenido: `
+            <p>
+                Ya se encuentra disponible el nuevo reglamento.
+                Te recomendamos leerlo atentamente antes de comenzar
+                las actividades.
+            </p>
+        `,
+    },
+];
+---
+
+<div class="novedades-container">
+    {
+        novedades.map((novedad, index) => (
+            <div class="novedades-box">
+                <img class="img-novedades" src={novedad.imagen} alt="" />
+
+                <h3>{novedad.titulo}</h3>
+
+                <p>{novedad.resumen}</p>
+
+                <button class="abrir-modal" data-modal={`modal-${index}`}>
+                    <span>Leer completo</span>
+                    <img src="./arrow-novedades.png" alt="" />
+                </button>
+            </div>
+        ))
+    }
+</div>
+
+{
+    novedades.map((novedad, index) => (
+        <div class="modal" id={`modal-${index}`}>
+            <div class="modal-contenido">
+                <button class="cerrar-modal">×</button>
+
+                <img class="modal-imagen" src={novedad.imagen} alt="" />
+
+                <h2>{novedad.titulo}</h2>
+
+                <div class="modal-texto" set:html={novedad.contenido} />
+            </div>
+        </div>
+    ))
+}
+
+<style>
+    .novedades-container {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 30px;
+        margin-top: 20px;
+        margin-bottom: 80px;
+    }
+    .novedades-box {
+        width: 290px;
+        height: 345px;
+        border-radius: 25px;
+        background-color: #0d2547;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        padding: 8px;
+        box-sizing: border-box;
+        flex-shrink: 0;
+    }
+
+    .img-novedades {
+        width: 229px;
+        height: 174px;
+    }
+    h3 {
+        color: white;
+    }
+    button {
+        background-color: transparent;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: none;
+    }
+    a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 6px;
+    }
+    p {
+        font-size: 16px;
+        color: white;
+        font-weight: 300;
+        padding: 10px;
+    }
+    a p {
+        color: #d7a657;
+    }
+    .arrow-novedades {
+        width: 20px;
+        height: 20px;
+    }
+
+    /*Modal*/
+    .modal {
+        display: none;
+        position: fixed;
+        inset: 0;
+
+        background-color: rgba(0, 0, 0, 0.7);
+
+        justify-content: center;
+        align-items: center;
+
+        z-index: 1000;
+    }
+
+    .modal.activo {
+        display: flex;
+    }
+
+    .modal-contenido {
+        position: relative;
+
+        width: 700px;
+        max-width: 90%;
+        max-height: 85vh;
+
+        overflow-y: auto;
+
+        background-color: #0d2547;
+        border-radius: 25px;
+
+        padding: 50px;
+
+        box-sizing: border-box;
+    }
+
+    .modal-imagen {
+        width: 100%;
+        max-height: 300px;
+        object-fit: cover;
+        border-radius: 25px;
+    }
+
+    .modal-contenido h2 {
+        color: white;
+        font-size: 26px;
+        margin-top: 28px;
+    }
+
+    .modal-texto {
+        color: white;
+        font-size: 16px;
+        line-height: 1.6;
+        margin-top: 28px;
+    }
+
+    .cerrar-modal {
+        position: absolute;
+        top: 15px;
+        right: 20px;
+
+        background: none;
+        border: none;
+
+        color: white;
+        font-size: 32px;
+
+        cursor: pointer;
+    }
+</style>
+
+<script>
+    const botones = document.querySelectorAll<HTMLElement>(".abrir-modal");
+    const modales = document.querySelectorAll<HTMLElement>(".modal");
+    const botonesCerrar = document.querySelectorAll<HTMLElement>(".cerrar-modal");
+
+    botones.forEach((boton) => {
+        boton.addEventListener("click", () => {
+            const idModal = boton.dataset.modal;
+            const modal = document.getElementById(idModal ?? "");
+
+            if (!modal) return;
+            modal.classList.add("activo");
+        });
+    });
+
+    botonesCerrar.forEach((boton) => {
+        boton.addEventListener("click", () => {
+            const modal = boton.closest(".modal");
+
+            if (!modal) return;
+            modal.classList.remove("activo");
+        });
+    });
+
+    modales.forEach((modal) => {
+        modal.addEventListener("click", (e) => {
+            if (e.target === modal) {
+                modal.classList.remove("activo");
+            }
+        });
+    });
+</script>
