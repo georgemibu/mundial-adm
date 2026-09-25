@@ -1,42 +1,102 @@
 ---
 const currentPath = Astro.url.pathname;
+const navItems = [
+    { label: "INICIO", href: "/", key: "/" },
+    { label: "EL MUNDIAL", href: "#desafio", key: "/mundial" },
+    { label: "REGLAMENTO", href: "#reglamento", key: "/reglamento" },
+    { label: "CONGRESO", href: "#congreso", key: "/congreso" },
+    { label: "NOVEDADES", href: "#novedades", key: "/novedades" },
+];
 ---
 
-<nav>
-    <img src="/Logo-mundial.png" alt="Logo Mundial" class="logo mundial" /> 
+<nav class="desktop-nav" aria-label="Navegación principal">
+    <img src="/Logo-mundial.png" alt="Logo Mundial" class="logo mundial" />
 
     <ul>
-        <li>
-            <a href="/" class:list={{ active: currentPath === "/" }}>
-                Inicio
-            </a>
-        </li>
-
-        <li>
-            <a href="#desafio" class:list={{ active: currentPath === "/mundial" }}>
-                EL MUNDIAL
-            </a>
-        </li>
-
-        <li>
-            <a href="#reglamento" class:list={{ active: currentPath === "/reglamento" }}>
-                REGLAMENTO
-            </a>
-        </li>
-
-        <li>
-            <a href="#congreso" class:list={{ active: currentPath === "/congreso" }}>
-                CONGRESO
-            </a>
-        </li>
-
-        <li>
-            <a href="#novedades" class:list={{ active: currentPath === "/novedades" }}>
-                NOVEDADES
-            </a>
-        </li>
+        {navItems.map((item) => (
+            <li>
+                <a href={item.href} class:list={{ active: currentPath === item.key }}>
+                    {item.label === "INICIO" ? "Inicio" : item.label}
+                </a>
+            </li>
+        ))}
     </ul>
 </nav>
+
+<div class="mobile-nav">
+    <div class="mobile-nav-bar">
+        <img src="/Logo-mundial.png" alt="Logo Mundial" class="mobile-logo" />
+        <button
+            class="mobile-menu-toggle"
+            type="button"
+            aria-label="Abrir menú"
+            aria-expanded="false"
+            aria-controls="mobile-menu-panel"
+        >
+            <span class="menu-dots" aria-hidden="true">
+                <span></span>
+                <span></span>
+                <span></span>
+            </span>
+        </button>
+    </div>
+
+    <aside id="mobile-menu-panel" class="mobile-menu-panel" aria-hidden="true">
+        <div class="mobile-menu-header">
+            <div class="menu-logo-wrap">
+                <img src="/Logo-mundial.png" alt="Logo Mundial" class="menu-logo" />
+            </div>
+            <button type="button" class="close-menu" aria-label="Cerrar menú">×</button>
+        </div>
+
+        <div class="mobile-menu-links">
+            {navItems.map((item) => (
+                <a
+                    href={item.href}
+                    class:list={{ active: currentPath === item.key }}
+                    data-route={item.key}
+                >
+                    {item.label}
+                </a>
+            ))}
+        </div>
+    </aside>
+</div>
+
+<script>
+    const mobileNav = document.querySelector('.mobile-nav');
+    const toggleButton = document.querySelector('.mobile-menu-toggle');
+    const closeButton = document.querySelector('.close-menu');
+    const menuPanel = document.querySelector('.mobile-menu-panel');
+
+    if (mobileNav && toggleButton && closeButton && menuPanel) {
+        const setMenuState = (isOpen: boolean | undefined) => {
+            menuPanel.classList.toggle('is-open', isOpen);
+            menuPanel.setAttribute('aria-hidden', String(!isOpen));
+            toggleButton.setAttribute('aria-expanded', String(isOpen));
+            document.body.classList.toggle('menu-open', isOpen);
+        };
+
+        toggleButton.addEventListener('click', () => {
+            const isOpen = !menuPanel.classList.contains('is-open');
+            setMenuState(isOpen);
+        });
+
+        closeButton.addEventListener('click', () => setMenuState(false));
+
+        menuPanel.addEventListener('click', (event) => {
+            if (event.target === menuPanel) {
+                setMenuState(false);
+            }
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && menuPanel.classList.contains('is-open')) {
+                setMenuState(false);
+            }
+        });
+    }
+</script>
 
 <style>
     * {
@@ -45,7 +105,7 @@ const currentPath = Astro.url.pathname;
         box-sizing: border-box;
     }
 
-    nav {
+    .desktop-nav {
         width: 100%;
         height: 100px;
         display: flex;
@@ -54,7 +114,7 @@ const currentPath = Astro.url.pathname;
         align-items: center;
     }
 
-    img {
+    .desktop-nav .logo {
         width: 77px;
         height: 93px;
         margin-right: 20px;
@@ -62,7 +122,7 @@ const currentPath = Astro.url.pathname;
         margin-top: 10px;
     }
 
-    ul {
+    .desktop-nav ul {
         width: 100%;
         height: 100px;
         display: flex;
@@ -70,39 +130,215 @@ const currentPath = Astro.url.pathname;
         justify-content: space-evenly;
         align-items: center;
         margin-right: 20px;
-        
     }
 
-    li {
+    .desktop-nav li {
         list-style: none;
         display: inline-block;
         margin: 0 20px;
-        
     }
 
-li a {
-    display: flex;
-    align-items: center;
-    height: 100px;
-    padding: 0 25px;
-
-    text-decoration: none;
-    color: black;
-    font-size: 20px;
-    font-weight: 500;
-
+    .desktop-nav li a {
         display: flex;
-    align-items: center;
-    justify-content: center;
-}
+        align-items: center;
+        justify-content: center;
+        height: 100px;
+        padding: 0 25px;
+        text-decoration: none;
+        color: black;
+        font-size: 20px;
+        font-weight: 500;
+    }
 
-li a.active {
-    width: 144px;
-    height: 40px;
-    border-radius: 16px;
-    background-color: #0D2547;
-    color: white;
-    font-weight: 900;
+    .desktop-nav li a.active {
+        width: 144px;
+        height: 40px;
+        border-radius: 16px;
+        background-color: #0d2547;
+        color: white;
+        font-weight: 900;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);
-}
+    }
+
+    .mobile-nav {
+        display: none;
+    }
+
+    body.menu-open {
+        overflow: hidden;
+    }
+
+    @media (max-width: 1076px) {
+        .desktop-nav .logo {
+            width: 47px;
+            height: 63px;
+            margin-top: 10px;
+        }
+        .desktop-nav {
+            height: auto;
+            flex-direction: column;
+        }
+        .desktop-nav li a {
+            height: 100px;
+            padding: 0 10px;
+            font-size: 16px;
+        }
+        .desktop-nav li a.active {
+            width: 144px;
+            height: 40px;
+            border-radius: 14px;
+            background-color: #0d2547;
+            color: white;
+            font-weight: 900;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .desktop-nav {
+            display: none;
+        }
+
+        .mobile-nav {
+            display: block;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .mobile-nav-bar {
+            height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 18px 0 14px;
+        }
+
+        .mobile-logo {
+            width: 54px;
+            height: 54px;
+            object-fit: contain;
+            filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.18));
+        }
+
+        .mobile-menu-toggle {
+            background: transparent;
+            border: none;
+            width: 48px;
+            height: 48px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .menu-dots {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        .menu-dots span {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #f4d58d;
+            display: block;
+        }
+
+        .mobile-menu-panel {
+            position: fixed;
+            inset: 16px 0 auto 0;
+            width: min(92vw, 390px);
+            margin: 0 auto;
+            background: rgba(237, 234, 230, 0.97);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            border-radius: 12px;
+            box-shadow: 0 16px 32px rgba(0, 0, 0, 0.14);
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(-16px);
+            transition: opacity 0.2s ease, transform 0.2s ease;
+            z-index: 60;
+            left: 50%;
+            transform: translate(-50%, -16px);
+        }
+
+        .mobile-menu-panel.is-open {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translate(-50%, 0);
+        }
+
+        .mobile-menu-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 20px 12px;
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        .menu-logo-wrap {
+            width: 54px;
+            height: 54px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .menu-logo {
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
+        }
+
+        .close-menu {
+            background: transparent;
+            border: none;
+            color: #111827;
+            font-size: 3.2rem;
+            line-height: 1;
+            cursor: pointer;
+            width: 42px;
+            height: 42px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+        }
+
+        .mobile-menu-links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 0 16px 18px;
+        }
+
+        .mobile-menu-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 60px;
+            padding: 12px 14px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.28);
+            color: #0d1b2a;
+            text-decoration: none;
+            font-size: clamp(1.1rem, 3vw, 1.55rem);
+            font-weight: 800;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+            border: 1px solid rgba(161, 122, 35, 0.12);
+            font-family: "Poppins", sans-serif;
+        }
+
+        .mobile-menu-links a.active {
+            background: #0d2547;
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(13, 37, 71, 0.24);
+        }
+    }
 </style>

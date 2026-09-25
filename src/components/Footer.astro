@@ -1,0 +1,132 @@
+<section class="footer">
+    <div class="copy">
+        <h3>© 2026 CONAMERCO™</h3>
+        <h3>All rights reserved</h3>
+    </div>
+    <div class="organiza">
+        <h4>Organiza</h4>
+        <img src="./logo-clam.png" alt="">
+    </div>
+    <div class="separador">
+        <img src="separador2.png" alt="" />
+    </div>
+    <div class="createdby">
+        <img src="./Created by Rocío Design.png" alt="">
+        <img src="./rosa.png" alt="">
+    </div>
+</section>
+
+<style>
+    .footer {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+        background-color: #0d2547;
+        color: white;
+        padding: 20px 24px;
+        flex-wrap: wrap;
+    }
+
+    .copy {
+        font-size: 16px;
+        margin-left: 0;
+        min-width: 160px;
+    }
+
+    .copy h3 {
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 1.5;
+    }
+
+    .organiza {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        flex: 1;
+        min-width: 160px;
+    }
+
+    .organiza h4 {
+        font-size: 16px;
+        font-weight: 600;
+    }
+
+    .organiza img {
+        width: 168px;
+        height: 32px;
+        object-fit: contain;
+    }
+
+    .separador {
+        height: 67px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 0;
+        flex: 0 0 auto;
+    }
+
+    .separador img {
+        height: 45px;
+        width: auto;
+    }
+
+    .createdby {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: 0;
+        margin-right: 0;
+        gap: 16px;
+        min-width: 220px;
+    }
+
+    .createdby img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    @media (max-width: 900px) {
+        .footer {
+            justify-content: center;
+            text-align: center;
+        }
+
+        .copy,
+        .organiza,
+        .createdby {
+            width: 100%;
+            min-width: 0;
+        }
+
+        .separador {
+            display: none;
+        }
+    }
+
+    @media (max-width: 520px) {
+        .footer {
+            padding: 20px 16px;
+        }
+
+        .copy h3,
+        .organiza h4 {
+            font-size: 14px;
+        }
+
+        .organiza img {
+            width: 140px;
+            height: auto;
+        }
+
+        .createdby {
+            flex-direction: column;
+            gap: 10px;
+        }
+    }
+</style>

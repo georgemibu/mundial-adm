@@ -13,7 +13,9 @@
             <br />una startup escalable y representar a su universidad en la
             Gran Final.
         </p>
-        <button type="button" class="btn" id="open-participa-modal">QUIERO<br /> PARTICIPAR</button>
+        <button type="button" class="btn" id="open-participa-modal"
+            >QUIERO<br /> PARTICIPAR</button
+        >
     </div>
     <div class="right">
         <div class="imagenes">
@@ -31,13 +33,28 @@
 </section>
 
 <div class="modal-backdrop" id="participa-modal" aria-hidden="true">
-    <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="participa-title">
+    <div
+        class="modal-panel"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="participa-title"
+    >
         <div class="modal-header">
-            <button type="button" class="icon-button" aria-label="Volver" data-close-modal>
+            <button
+                type="button"
+                class="icon-button"
+                aria-label="Volver"
+                data-close-modal
+            >
                 <span aria-hidden="true">&#8592;</span>
             </button>
             <h3 id="participa-title">Participa</h3>
-            <button type="button" class="icon-button close-button" aria-label="Cerrar formulario" data-close-modal>
+            <button
+                type="button"
+                class="icon-button close-button"
+                aria-label="Cerrar formulario"
+                data-close-modal
+            >
                 <span aria-hidden="true">&#215;</span>
             </button>
         </div>
@@ -47,26 +64,49 @@
         <form id="participa-form">
             <div class="field-group">
                 <label for="nombre-apellido">Nombre y apellido</label>
-                <input id="nombre-apellido" name="nombre-apellido" type="text" placeholder="Escribe" />
+                <input
+                    id="nombre-apellido"
+                    name="nombre-apellido"
+                    type="text"
+                    placeholder="Escribe"
+                />
             </div>
 
             <div class="field-group">
                 <label for="celular">Celular de contacto</label>
-                <input id="celular" name="celular" type="tel" placeholder="Ej: +54 261 1234567" />
+                <input
+                    id="celular"
+                    name="celular"
+                    type="tel"
+                    placeholder="Ej: +54 261 1234567"
+                />
             </div>
 
             <div class="field-group">
                 <label for="email">E-mail personal o de tu universidad</label>
-                <input id="email" name="email" type="email" placeholder="Escribe" />
+                <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    placeholder="Escribe"
+                />
             </div>
 
             <div class="field-group">
                 <label for="universidad">Nombre de la universidad</label>
-                <input id="universidad" name="universidad" type="text" placeholder="Escribe" />
+                <input
+                    id="universidad"
+                    name="universidad"
+                    type="text"
+                    placeholder="Escribe"
+                />
             </div>
 
             <div class="field-group">
-                <label for="rol">¿Eres estudiante, docente o miembro directivo de la universidad?</label>
+                <label for="rol"
+                    >¿Eres estudiante, docente o miembro directivo de la
+                    universidad?</label
+                >
                 <select id="rol" name="rol">
                     <option value="">Seleccioná una opción</option>
                     <option value="estudiante">Estudiante</option>
@@ -77,12 +117,22 @@
 
             <div class="field-group">
                 <label for="pais">País</label>
-                <input id="pais" name="pais" type="text" placeholder="Escribe" />
+                <input
+                    id="pais"
+                    name="pais"
+                    type="text"
+                    placeholder="Escribe"
+                />
             </div>
 
             <div class="field-group">
                 <label for="localidad">Localidad</label>
-                <input id="localidad" name="localidad" type="text" placeholder="Escribe" />
+                <input
+                    id="localidad"
+                    name="localidad"
+                    type="text"
+                    placeholder="Escribe"
+                />
             </div>
 
             <button type="submit" class="submit-btn">Enviar</button>
@@ -107,50 +157,51 @@
             <img src="./homeevento.png" alt="" />
             <h3>CONAMERCO 2026</h3>
         </div>
-        <img src="./separador.png" alt="" class="separador" />
+        <img class="separador" src="./separador.png" alt="" class="separador" />
     </div>
     <div class="imagenderecha">
         <img src="./hometrianguloizq.png" alt="Imagen 1" />
     </div>
 </div>
 
+
 <script>
-    const modal = document.getElementById('participa-modal');
-    const openButton = document.getElementById('open-participa-modal');
-    const closeButtons = document.querySelectorAll('[data-close-modal]');
-    const form = document.getElementById('participa-form');
+    const modal = document.getElementById("participa-modal");
+    const openButton = document.getElementById("open-participa-modal");
+    const closeButtons = document.querySelectorAll("[data-close-modal]");
+    const form = document.getElementById("participa-form");
 
     const openModal = () => {
-        modal.classList.add('is-open');
-        modal.setAttribute('aria-hidden', 'false');
-        document.body.classList.add('modal-open');
+        modal.classList.add("is-open");
+        modal.setAttribute("aria-hidden", "false");
+        document.body.classList.add("modal-open");
     };
 
     const closeModal = () => {
-        modal.classList.remove('is-open');
-        modal.setAttribute('aria-hidden', 'true');
-        document.body.classList.remove('modal-open');
+        modal.classList.remove("is-open");
+        modal.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("modal-open");
     };
 
-    openButton.addEventListener('click', openModal);
+    openButton.addEventListener("click", openModal);
 
     closeButtons.forEach((button) => {
-        button.addEventListener('click', closeModal);
+        button.addEventListener("click", closeModal);
     });
 
-    modal.addEventListener('click', (event) => {
+    modal.addEventListener("click", (event) => {
         if (event.target === modal) {
             closeModal();
         }
     });
 
-    document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape' && modal.classList.contains('is-open')) {
+    document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && modal.classList.contains("is-open")) {
             closeModal();
         }
     });
 
-    form.addEventListener('submit', (event) => {
+    form.addEventListener("submit", (event) => {
         event.preventDefault();
         form.reset();
         closeModal();
@@ -249,7 +300,9 @@
         font-family: "Poppins", sans-serif;
         font-weight: 800;
         cursor: pointer;
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        transition:
+            transform 0.2s ease,
+            box-shadow 0.2s ease;
     }
 
     .btn:hover,
@@ -426,9 +479,15 @@
         appearance: none;
         -webkit-appearance: none;
         -moz-appearance: none;
-        background-image: linear-gradient(45deg, transparent 50%, #0d1b2a 50%), linear-gradient(135deg, #0d1b2a 50%, transparent 50%);
-        background-position: calc(100% - 20px) calc(50% - 3px), calc(100% - 14px) calc(50% - 3px);
-        background-size: 6px 6px, 6px 6px;
+        background-image:
+            linear-gradient(45deg, transparent 50%, #0d1b2a 50%),
+            linear-gradient(135deg, #0d1b2a 50%, transparent 50%);
+        background-position:
+            calc(100% - 20px) calc(50% - 3px),
+            calc(100% - 14px) calc(50% - 3px);
+        background-size:
+            6px 6px,
+            6px 6px;
         background-repeat: no-repeat;
     }
 
@@ -461,5 +520,59 @@
         .field-group label {
             font-size: 1rem;
         }
+    }
+
+    @media (max-width: 498px) {
+        section {
+            padding-top: 6px;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column-reverse;
+        }
+        .left {
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+                        margin-top: 25px;
+
+        }
+        .right {
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+        }
+        .imagenes {
+            margin-rightt: 38px;
+        }
+
+        h1 {
+            font-size: 24px;
+        }
+        h2{
+            font-size: 15px;
+        }
+        p{
+            font-size: 12px;
+        }
+            .btn,
+    .submit-btn{
+        font-size: 16px;
+        margin-bottom: 26px;
+    }
+    .imagenizquierda{
+        display:none;
+    }
+    .imagenderecha{
+        display:none;
+    }
+    .bottom{
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        padding-left: 60px;
+    }
+    .separador{
+        display:none;
+    }
     }
 </style>

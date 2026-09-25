@@ -1,62 +1,61 @@
 <section id="congreso">
-<div class="caja-uno">
-    <div class="caja-izquierda">
-        <h2>CONGRESO</h2>
-        <h3>EL MUNDIAL ES PARTE DEL CONAMERCO 2026</h3>
-        <p>
-            El Mundial de Estudiantes de Administración <br />
-            se desarrolla en el marco del XXVII CONAMERCO,<br />
-            organizado por el Colegio Profesional de Licenciados en <br />
-            Administración de Mendoza, Argentina con la participación de la <br
-            />
-            Organización Latinoamericana de Administración.
-        </p>
-    </div>
-    <div class="caja-derecha">
-        <img src="./mendoza.png" alt="" />
-        <div class="p">MENDOZA, ARGENTINA</div>
-    </div>
-</div>
-
-<div class="caja-dos">
-    <div class="contenido-caja">
-        <img src="./elipse1.png" alt="" />
-        <h3>
-            CONGRESO LATINOAMERICANO <br />
-            DE ADMINISTRACIÓN
-        </h3>
-
-        <a href="/reglamento" class="arrow-container">
-            <p>Ver más</p>
-            <img src="./arrow.png" alt="" />
-        </a>
-    </div>
-    <div class="contenido-caja">
-        <img src="./elipse2.png" alt="" />
-        <h3>
-            CONGRESO LATINOAMERICANO <br />
-            DE ADMINISTRACIÓN
-        </h3>
-    </div>
-</div>
-
-<div class="bottom">
-    <div class="imagenizquierda">
-        <img src="./hometrianguloizq.png" alt="Imagen 1" />
-    </div>
-    <div class="contenedor-centro">
-        <div class="contenedor-agenda">
-            <h3>DOS EXPERIENCIAS, UN MISMO ESCENARIO.</h3>
-            <h4><b>MENDOZA 2026</b></h4>
+    <div class="caja-uno">
+        <div class="caja-izquierda">
+            <h2>CONGRESO</h2>
+            <h3>EL MUNDIAL ES PARTE DEL CONAMERCO 2026</h3>
+            <p>
+                El Mundial de Estudiantes de Administración <br />
+                se desarrolla en el marco del XXVII CONAMERCO,<br />
+                organizado por el Colegio Profesional de Licenciados en <br />
+                Administración de Mendoza, Argentina con la participación de la <br
+                />
+                Organización Latinoamericana de Administración.
+            </p>
         </div>
-        <img src="./separador.png" alt="" class="separador" />
+        <div class="caja-derecha">
+            <img src="./mendoza.png" alt="" />
+            <div class="p">MENDOZA, ARGENTINA</div>
+        </div>
     </div>
-    <div class="imagenderecha">
-        <img src="./hometrianguloizq.png" alt="Imagen 1" />
-    </div>
-</div>
-</section>
 
+    <div class="caja-dos">
+        <div class="contenido-caja">
+            <img src="./elipse1.png" alt="" />
+            <h3>
+                CONGRESO LATINOAMERICANO <br />
+                DE ADMINISTRACIÓN
+            </h3>
+
+            <a href="/reglamento" class="arrow-container">
+                <p>Ver más</p>
+                <img src="./arrow.png" alt="" />
+            </a>
+        </div>
+        <div class="contenido-caja">
+            <img src="./elipse2.png" alt="" />
+            <h3>
+                CONGRESO LATINOAMERICANO <br />
+                DE ADMINISTRACIÓN
+            </h3>
+        </div>
+    </div>
+
+    <div class="bottom">
+        <div class="imagenizquierda">
+            <img src="./hometrianguloizq.png" alt="Imagen 1" />
+        </div>
+        <div class="contenedor-centro">
+            <div class="contenedor-agenda">
+                <h3>DOS EXPERIENCIAS, UN MISMO ESCENARIO.</h3>
+                <h4><b>MENDOZA 2026</b></h4>
+            </div>
+            <img src="./separador.png" alt="" class="separador" />
+        </div>
+        <div class="imagenderecha">
+            <img src="./hometrianguloizq.png" alt="Imagen 1" />
+        </div>
+    </div>
+</section>
 
 <style>
     .caja-uno {
@@ -136,12 +135,12 @@
         width: 16px;
         height: 16px;
     }
-    .arrow-container p{
-        font-size:10px;
+    .arrow-container p {
+        font-size: 10px;
         font-weight: 200;
         text-decoration: none;
     }
-        a {
+    a {
         text-decoration: none;
     }
 
@@ -176,7 +175,6 @@
         align-items: center;
     }
     .contenedor-agenda {
-
         width: 434px;
         height: 98px;
         display: flex;
@@ -188,18 +186,16 @@
         color: white;
         border-radius: 15px;
         text-align: center;
-        
+
         font-size: 16px;
-        margin-top:40px;
+        margin-top: 40px;
     }
     .contenedor-agenda h3 {
-
         font-family: "Poppins", sans-serif;
         font-weight: 200;
         font-size: 20px;
     }
-        .contenedor-agenda h4 {
-
+    .contenedor-agenda h4 {
         font-family: "Poppins", sans-serif;
         font-weight: 600;
         font-size: 20px;
@@ -208,7 +204,56 @@
         width: 18px;
         height: 18px;
     }
-    .contenedor-centro img{
+    .contenedor-centro img {
         height: 45px;
+    }
+
+    @media (max-width: 498px) {
+        .caja-uno{
+            width: 100%;
+            flex-direction: column;
+                    padding-left: 10px;
+        padding-right: 10px;
+        margin-top: 40px;
+        }
+        .caja-uno .caja-izquierda h2{
+            font-size:24px;
+        }
+                .caja-uno .caja-izquierda h3{
+            font-size:16px;
+        }
+                .caja-uno .caja-izquierda p{
+            font-size:12px;
+            letter-spacing: 1.3;
+        }
+        .p{
+            font-size: 10px;
+        }
+        .caja-dos{
+            gap:6px;
+        }
+           .contenido-caja img {
+        width: 75px;
+        height: 75px;
+    }
+        .contenido-caja h3 {
+
+        font-size: 12px;
+        margin-top: 16px;
+    }
+       .arrow-container img {
+        width: 11px;
+        height: 11px;
+    }
+        .arrow-container p {
+        font-size: 10px;
+    }
+    .bottom{
+        justify-content: center;
+        align-items: center;
+    }
+    .imagenderecha, .imagenizquierda{
+        display:none;
+    }
     }
 </style>
