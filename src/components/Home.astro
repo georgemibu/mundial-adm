@@ -508,7 +508,35 @@
         overflow: hidden;
     }
 
-    @media (max-width: 768px) {
+    @media (min-width: 641px) and (max-width: 1024px) {
+        section {
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .left,
+        .right {
+            width: 100%;
+        }
+
+        .imagenes {
+            margin-left: 0;
+            margin: 0 auto;
+        }
+
+        .bottom {
+            align-items: center;
+            gap: 20px;
+        }
+
+        .contenedor-centro {
+            width: 100%;
+            max-width: 520px;
+        }
+    }
+
+    @media (max-width: 640px) {
         .modal-panel {
             width: min(92vw, 520px);
         }
@@ -522,7 +550,7 @@
         }
     }
 
-    @media (max-width: 498px) {
+    @media (max-width: 640px) {
         section {
             padding-top: 6px;
             justify-content: center;
@@ -543,6 +571,7 @@
         }
         .imagenes {
             margin-rightt: 38px;
+            margin-left:0;
         }
 
         h1 {

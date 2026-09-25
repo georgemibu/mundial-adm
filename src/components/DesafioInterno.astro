@@ -177,7 +177,21 @@
         visibility: hidden;
     }
 
-    @media (max-width: 498px) {
+    @media (min-width: 641px) and (max-width: 1024px) {
+        .elementos-container {
+            gap: 24px;
+        }
+
+        .elemento {
+            width: min(48%, 360px);
+        }
+
+        .flecha-costado {
+            display: none;
+        }
+    }
+
+    @media (max-width: 640px) {
         .flecha-costado {
             display: none;
         }
