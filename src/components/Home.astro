@@ -537,15 +537,55 @@
     }
 
     @media (max-width: 640px) {
+        .modal-backdrop {
+            align-items: flex-start;
+            padding-top: 86px;
+        }
+
         .modal-panel {
-            width: min(92vw, 520px);
+            width: min(92vw, 420px);
+            max-height: calc(100vh - 100px);
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            padding: 14px 14px 6px;
         }
 
         .modal-header h3 {
-            font-size: 2.2rem;
+            font-size: 2rem;
+        }
+
+        .modal-step {
+            width: calc(100% - 24px);
+            padding: 8px 0 10px;
+            font-size: 1rem;
+        }
+
+        #participa-form {
+            width: calc(100% - 22px);
+            gap: 12px;
+        }
+
+        .field-group {
+            gap: 6px;
         }
 
         .field-group label {
+            font-size: 0.96rem;
+        }
+
+        .field-group input,
+        .field-group select {
+            min-height: 48px;
+            border-radius: 14px;
+            font-size: 0.98rem;
+        }
+
+        .submit-btn {
+            width: 100%;
+            max-width: 200px;
+            height: 52px;
             font-size: 1rem;
         }
     }
