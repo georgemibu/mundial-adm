@@ -60,7 +60,6 @@
         </div>
 
         <div class="modal-step"></div>
-
         <form id="participa-form">
             <div class="field-group">
                 <label for="nombre-apellido">Nombre y apellido</label>
@@ -78,7 +77,14 @@
                     id="celular"
                     name="celular"
                     type="tel"
-                    placeholder="Ej: +54 261 1234567"
+                    inputmode="numeric"
+                    autocomplete="tel"
+                    pattern="[0-9]{7,15}"
+                    minlength="7"
+                    maxlength="15"
+                    title="Ingresá entre 7 y 15 dígitos, sin espacios ni símbolos."
+                    placeholder="Ej: 542611234567 (solo números)"
+                    required
                 />
             </div>
 
@@ -107,8 +113,8 @@
                     >¿Eres estudiante, docente o miembro directivo de la
                     universidad?</label
                 >
-                <select id="rol" name="rol">
-                    <option value="">Seleccioná una opción</option>
+                <select id="rol" name="rol" required>
+                    <option value="" disabled selected>Seleccioná una opción</option>
                     <option value="estudiante">Estudiante</option>
                     <option value="docente">Docente</option>
                     <option value="directivo">Miembro directivo</option>
@@ -135,6 +141,12 @@
                 />
             </div>
 
+            <div
+                id="participa-status"
+                role="status"
+                aria-live="polite"
+                hidden
+            ></div>
             <button type="submit" class="submit-btn">Enviar</button>
         </form>
     </div>
@@ -169,43 +181,114 @@
     const modal = document.getElementById("participa-modal");
     const openButton = document.getElementById("open-participa-modal");
     const closeButtons = document.querySelectorAll("[data-close-modal]");
-    const form = document.getElementById("participa-form");
+    const form = document.querySelector<HTMLFormElement>("#participa-form");
+    const status = document.querySelector<HTMLDivElement>("#participa-status");
+    const submitButton = form?.querySelector<HTMLButtonElement>(".submit-btn");
 
-    const openModal = () => {
-        modal.classList.add("is-open");
-        modal.setAttribute("aria-hidden", "false");
-        document.body.classList.add("modal-open");
-    };
+    const emailServiceId = import.meta.env.PUBLIC_EMAILJS_SERVICE_ID;
+    const emailTemplateId = import.meta.env.PUBLIC_EMAILJS_TEMPLATE_ID;
+    const emailPublicKey = import.meta.env.PUBLIC_EMAILJS_PUBLIC_KEY;
 
-    const closeModal = () => {
-        modal.classList.remove("is-open");
-        modal.setAttribute("aria-hidden", "true");
-        document.body.classList.remove("modal-open");
-    };
+    if (modal && openButton && form && status && submitButton) {
+        const phoneInput = form.querySelector<HTMLInputElement>("#celular");
+        let isSubmitting = false;
 
-    openButton.addEventListener("click", openModal);
+        phoneInput?.addEventListener("input", () => {
+            phoneInput.value = phoneInput.value.replace(/\D/g, "").slice(0, 15);
+        });
 
-    closeButtons.forEach((button) => {
-        button.addEventListener("click", closeModal);
-    });
+        const openModal = () => {
+            modal.classList.add("is-open");
+            modal.setAttribute("aria-hidden", "false");
+            document.body.classList.add("modal-open");
+        };
 
-    modal.addEventListener("click", (event) => {
-        if (event.target === modal) {
-            closeModal();
-        }
-    });
+        const closeModal = () => {
+            modal.classList.remove("is-open");
+            modal.setAttribute("aria-hidden", "true");
+            document.body.classList.remove("modal-open");
+        };
 
-    document.addEventListener("keydown", (event) => {
-        if (event.key === "Escape" && modal.classList.contains("is-open")) {
-            closeModal();
-        }
-    });
+        openButton.addEventListener("click", openModal);
 
-    form.addEventListener("submit", (event) => {
-        event.preventDefault();
-        form.reset();
-        closeModal();
-    });
+        closeButtons.forEach((button) => {
+            button.addEventListener("click", closeModal);
+        });
+
+        modal.addEventListener("click", (event) => {
+            if (event.target === modal) {
+                closeModal();
+            }
+        });
+
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "Escape" && modal.classList.contains("is-open")) {
+                closeModal();
+            }
+        });
+
+        form.addEventListener("submit", async (event) => {
+            event.preventDefault();
+
+            if (isSubmitting || !form.reportValidity()) return;
+
+            if (!emailServiceId || !emailTemplateId || !emailPublicKey) {
+                status.textContent =
+                    "El envío todavía no está configurado. Por favor, contactanos por otro medio.";
+                status.hidden = false;
+                return;
+            }
+
+            const values = new FormData(form);
+            const templateParams = {
+                full_name: String(values.get("nombre-apellido") ?? "").trim(),
+                phone: String(values.get("celular") ?? "").trim(),
+                email: String(values.get("email") ?? "").trim(),
+                university: String(values.get("universidad") ?? "").trim(),
+                role: String(values.get("rol") ?? "").trim(),
+                country: String(values.get("pais") ?? "").trim(),
+                city: String(values.get("localidad") ?? "").trim(),
+            };
+
+            isSubmitting = true;
+            submitButton.disabled = true;
+            submitButton.textContent = "Enviando...";
+            status.textContent = "Enviando tu inscripción...";
+            status.hidden = false;
+
+            try {
+                const response = await fetch(
+                    "https://api.emailjs.com/api/v1.0/email/send",
+                    {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({
+                            service_id: emailServiceId,
+                            template_id: emailTemplateId,
+                            user_id: emailPublicKey,
+                            template_params: templateParams,
+                        }),
+                    },
+                );
+
+                if (!response.ok) {
+                    throw new Error(`EmailJS respondió con estado ${response.status}`);
+                }
+
+                form.reset();
+                status.textContent =
+                    "¡Gracias! Recibimos tus datos y nos pondremos en contacto.";
+            } catch (error) {
+                console.error("No se pudo enviar el formulario de inscripción.", error);
+                status.textContent =
+                    "No pudimos enviar tus datos. Revisá tu conexión e intentá nuevamente.";
+            } finally {
+                isSubmitting = false;
+                submitButton.disabled = false;
+                submitButton.textContent = "Enviar";
+            }
+        });
+    }
 </script>
 
 <style>
