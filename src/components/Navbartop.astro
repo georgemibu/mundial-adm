@@ -32,10 +32,45 @@
         align-items: center;
         padding-right: 48px;
     }
+
+    nav a {
+        width: 46px;
+        height: 46px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        transition:
+            transform 180ms ease,
+            background-color 180ms ease;
+    }
+
     .logo {
         width: 40px;
         height: 40px;
         margin: 2px;
+        transition: transform 180ms ease;
+    }
+
+    nav a:hover {
+        background-color: rgba(215, 166, 87, 0.16);
+        transform: translateY(-3px);
+    }
+
+    nav a:hover .logo {
+        transform: scale(1.06);
+    }
+
+    nav a:focus-visible {
+        outline: 2px solid #f4d58d;
+        outline-offset: 3px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        nav a,
+        .logo {
+            transition: none;
+        }
     }
 
 

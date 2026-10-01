@@ -24,18 +24,55 @@ import Footer from "../components/Footer.astro";
 	<Navbartop />
 	<Navbarbottom />
 	<Home />
-	<Desafio />
-	<Separador />
-	<CuentaRegresiva />
-	<ResumenReglamento />
-	<DesafioInterno />
-	<FinalUniversitaria />
-	<Congreso />
+	<div class="scroll-reveal"><Desafio /></div>
+	<div class="scroll-reveal"><Separador /></div>
+	<div class="scroll-reveal"><CuentaRegresiva /></div>
+	<div class="scroll-reveal"><ResumenReglamento /></div>
+	<div class="scroll-reveal"><DesafioInterno /></div>
+	<div class="scroll-reveal"><FinalUniversitaria /></div>
+	<div class="scroll-reveal"><Congreso /></div>
 	<Novedades />
-	<Separador />
-	<Edicion />
-	<Footer />
+	<div class="scroll-reveal"><Separador /></div>
+	<div class="scroll-reveal"><Edicion /></div>
+	<div class="scroll-reveal"><Footer /></div>
 </Layout>
+
+<script>
+	const revealElements = document.querySelectorAll(".scroll-reveal");
+	const supportsReveal =
+		"IntersectionObserver" in window &&
+		!window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+	if (supportsReveal) {
+		document.documentElement.classList.add("has-scroll-reveal");
+
+		const revealObserver = new IntersectionObserver(
+			(entries, observer) => {
+				entries.forEach((entry) => {
+					if (entry.isIntersecting) {
+						entry.target.classList.add("is-visible");
+						observer.unobserve(entry.target);
+					}
+				});
+			},
+			{
+				root: document.body,
+				threshold: 0.12,
+				rootMargin: "0px 0px -32px 0px",
+			},
+		);
+
+		const viewportHeight = document.documentElement.clientHeight;
+		revealElements.forEach((element) => {
+			const bounds = element.getBoundingClientRect();
+			if (bounds.top < viewportHeight && bounds.bottom > 0) {
+				element.classList.add("is-visible");
+			} else {
+				revealObserver.observe(element);
+			}
+		});
+	}
+</script>
 
 <style>
 	* {

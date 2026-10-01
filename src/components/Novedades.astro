@@ -3,15 +3,15 @@ import NovedadesBox from "../components/NovedadesBox.astro";
 ---
 
 <section id="novedades">
-    <div class="titulo">
+    <div class="titulo scroll-reveal">
         <h2>Novedades</h2>
     </div>
 
     <NovedadesBox />
 
-    <div class="universidades">
+    <div class="universidades scroll-reveal">
         <h2>¿Querés saber si tu Universidad esta participando?</h2>
-        <div class="container-universidades-top">
+        <div class="container-universidades">
             <div class="container-universidad">
                 <img src="./Universidad1.png" alt="" />
                 <h3>Universidad <br />Champagnat</h3>
@@ -45,8 +45,6 @@ import NovedadesBox from "../components/NovedadesBox.astro";
                     Maza
                 </h3>
             </div>
-        </div>
-        <div class="container-universidades-bottom">
             <div class="container-universidad">
                 <img src="./Universidad6.png" alt="" />
                 <h3>
@@ -95,25 +93,19 @@ import NovedadesBox from "../components/NovedadesBox.astro";
         text-align: center;
         margin-bottom: 40px;
     }
-    .container-universidades-top {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 40px;
-    }
-    .container-universidades-bottom {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 40px;
-
-        margin-top: 30px;
+    .container-universidades {
+        width: min(100%, 1120px);
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 140px), 1fr));
+        justify-items: center;
+        align-items: start;
+        gap: 30px 24px;
     }
 
     .container-universidad {
-        height: 209px;
+        width: 100%;
+        min-height: 209px;
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
@@ -133,20 +125,49 @@ import NovedadesBox from "../components/NovedadesBox.astro";
             font-size: 30px;
         }
 
-        .container-universidades-top,
-        .container-universidades-bottom {
-            gap: 20px;
-            flex-wrap: wrap;
+        .container-universidades {
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 130px), 1fr));
+            gap: 24px 16px;
         }
 
         .container-universidad {
-            width: calc(33.33% - 20px);
+            min-height: 190px;
         }
     }
 
     @media (max-width: 640px) {
-            .titulo h2{
-                font-size:24px;
-            }
+        .titulo h2 {
+            font-size: 24px;
         }
+
+        .universidades {
+            padding: 0 16px;
+        }
+
+        .universidades h2 {
+            font-size: 21px;
+            margin-bottom: 24px;
+        }
+
+        .container-universidades {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px 12px;
+        }
+
+        .container-universidad {
+            min-height: 160px;
+        }
+
+        .container-universidad img {
+            width: 88px;
+            height: 82px;
+            object-fit: contain;
+        }
+
+        .container-universidad h3 {
+            font-size: 13px;
+            line-height: 1.25;
+            text-align: center;
+        }
+    }
 </style>

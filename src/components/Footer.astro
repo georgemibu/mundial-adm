@@ -1,132 +1,163 @@
-<section class="footer">
-    <div class="copy">
-        <h3>© 2026 CONAMERCO™</h3>
-        <h3>All rights reserved</h3>
+<footer class="footer">
+    <div class="footer-inner">
+        <div class="copy">
+            <h3>© 2026 CONAMERCO™</h3>
+            <p>All rights reserved</p>
+        </div>
+
+        <div class="organiza">
+            <h4>Organiza</h4>
+            <img src="./logo-clam.png" alt="Colegio de Licenciados en Administración de Mendoza" />
+        </div>
+
+        <div class="separador" aria-hidden="true"></div>
+
+        <div class="createdby" aria-label="Diseño">
+            <img src="./Created by Rocío Design.png" alt="Created by Rocío Design" />
+            <img src="./rosa.png" alt="" />
+        </div>
     </div>
-    <div class="organiza">
-        <h4>Organiza</h4>
-        <img src="./logo-clam.png" alt="">
-    </div>
-    <div class="separador">
-        <img src="separador2.png" alt="" />
-    </div>
-    <div class="createdby">
-        <img src="./Created by Rocío Design.png" alt="">
-        <img src="./rosa.png" alt="">
-    </div>
-</section>
+</footer>
 
 <style>
     .footer {
+        --footer-navy: #0d2547;
+        --footer-gold: #d7a657;
         width: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 20px;
-        background-color: #0d2547;
-        color: white;
-        padding: 20px 24px;
-        flex-wrap: wrap;
+        padding: 28px 40px;
+        border-top: 3px solid var(--footer-gold);
+        background: var(--footer-navy);
+        color: #fff;
     }
 
-    .copy {
-        font-size: 16px;
-        margin-left: 0;
-        min-width: 160px;
+    .footer-inner {
+        width: min(100%, 1240px);
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(170px, auto) auto minmax(0, 1fr);
+        align-items: center;
+        gap: 36px;
+    }
+
+    .copy h3,
+    .copy p,
+    .organiza h4 {
+        margin: 0;
+        font-size: 14px;
+        line-height: 1.6;
     }
 
     .copy h3 {
-        font-size: 16px;
-        font-weight: 600;
-        line-height: 1.5;
+        font-weight: 700;
+    }
+
+    .copy p {
+        color: rgba(255, 255, 255, 0.72);
     }
 
     .organiza {
         display: flex;
         flex-direction: column;
-        justify-content: center;
         align-items: center;
         gap: 10px;
-        flex: 1;
-        min-width: 160px;
+        text-align: center;
     }
 
     .organiza h4 {
-        font-size: 16px;
-        font-weight: 600;
+        color: var(--footer-gold);
+        font-weight: 700;
+        text-transform: uppercase;
     }
 
     .organiza img {
         width: 168px;
-        height: 32px;
+        height: 42px;
         object-fit: contain;
     }
 
     .separador {
-        height: 67px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-top: 0;
-        flex: 0 0 auto;
-    }
-
-    .separador img {
-        height: 45px;
-        width: auto;
+        width: 1px;
+        height: 54px;
+        background: rgba(215, 166, 87, 0.65);
     }
 
     .createdby {
         display: flex;
-        justify-content: center;
         align-items: center;
-        margin-left: 0;
-        margin-right: 0;
-        gap: 16px;
-        min-width: 220px;
+        justify-content: flex-end;
+        gap: 18px;
     }
 
-    .createdby img {
-        max-width: 100%;
-        height: auto;
+    .createdby img:first-child {
+        width: 170px;
+        max-height: 48px;
+        object-fit: contain;
     }
 
-    @media (min-width: 641px) and (max-width: 900px) {
-        .footer {
-            justify-content: center;
-            text-align: center;
+    .createdby img:last-child {
+        width: 42px;
+        height: 42px;
+        object-fit: contain;
+    }
+
+    @media (max-width: 900px) {
+        .footer-inner {
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+            gap: 24px;
         }
 
-        .copy,
-        .organiza,
-        .createdby {
-            width: 100%;
-            min-width: 0;
+        .copy {
+            text-align: center;
         }
 
         .separador {
             display: none;
         }
+
+        .createdby {
+            grid-column: 1 / -1;
+            justify-content: center;
+        }
     }
 
     @media (max-width: 640px) {
         .footer {
-            padding: 20px 16px;
+            padding: 28px 20px 24px;
+        }
+
+        .footer-inner {
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
         }
 
         .copy h3,
+        .copy p,
         .organiza h4 {
-            font-size: 14px;
+            font-size: 13px;
+        }
+
+        .organiza {
+            gap: 8px;
         }
 
         .organiza img {
-            width: 140px;
-            height: auto;
+            width: 150px;
+            height: 38px;
         }
 
         .createdby {
-            flex-direction: column;
-            gap: 10px;
+            gap: 14px;
+        }
+
+        .createdby img:first-child {
+            width: 150px;
+            max-height: 42px;
+        }
+
+        .createdby img:last-child {
+            width: 36px;
+            height: 36px;
         }
     }
 </style>
