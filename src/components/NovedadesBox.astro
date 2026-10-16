@@ -1,40 +1,23 @@
 ---
-const novedades = [
-    {
-        imagen: "./novedades1.png",
-        titulo: "Bienvenida a la Academia",
-        resumen:
-            "Te damos la bienvenida a la Academia. En esta sección encontrarás el programa de cada uno de los módulos...",
-        contenido: `
-            <p>
-                Te damos la bienvenida a la Academia. En este espacio
-                podrás encontrar toda la información relacionada con
-                los módulos y actividades.
-            </p>
-
-            <p>
-                El programa está compuesto por diferentes encuentros
-                destinados a brindar herramientas para la formación
-                profesional.
-            </p>
-        `,
-    },
-
-];
+import { novedades, textosNovedades } from "../data/novedades";
 ---
 
 <div class="novedades-container">
     {
         novedades.map((novedad, index) => (
             <div class="novedades-box scroll-reveal">
-                <img class="img-novedades" src={novedad.imagen} alt="" />
+                <img
+                    class="img-novedades"
+                    src={novedad.imagen}
+                    alt={novedad.titulo}
+                />
 
                 <h3>{novedad.titulo}</h3>
 
                 <p>{novedad.resumen}</p>
 
                 <button class="abrir-modal" data-modal={`modal-${index}`}>
-                    <span>Leer completo</span>
+                    <span>{textosNovedades.etiquetaLeerCompleto}</span>
                     <img src="./arrow-novedades.png" alt="" />
                 </button>
             </div>
@@ -48,11 +31,19 @@ const novedades = [
             <div class="modal-contenido">
                 <button class="cerrar-modal">×</button>
 
-                <img class="modal-imagen" src={novedad.imagen} alt="" />
+                <img
+                    class="modal-imagen"
+                    src={novedad.imagen}
+                    alt={novedad.titulo}
+                />
 
                 <h2>{novedad.titulo}</h2>
 
-                <div class="modal-texto" set:html={novedad.contenido} />
+                <div class="modal-texto">
+                    {novedad.contenido.map((parrafo) => (
+                        <p>{parrafo}</p>
+                    ))}
+                </div>
             </div>
         </div>
     ))
@@ -192,7 +183,8 @@ const novedades = [
 <script>
     const botones = document.querySelectorAll<HTMLElement>(".abrir-modal");
     const modales = document.querySelectorAll<HTMLElement>(".modal");
-    const botonesCerrar = document.querySelectorAll<HTMLElement>(".cerrar-modal");
+    const botonesCerrar =
+        document.querySelectorAll<HTMLElement>(".cerrar-modal");
 
     botones.forEach((boton) => {
         boton.addEventListener("click", () => {

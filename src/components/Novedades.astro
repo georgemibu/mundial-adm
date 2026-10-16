@@ -1,79 +1,30 @@
 ---
 import NovedadesBox from "../components/NovedadesBox.astro";
+import { textosNovedades, universidades } from "../data/novedades";
 ---
 
 <section id="novedades">
     <div class="titulo scroll-reveal">
-        <h2>Novedades</h2>
+        <h2>{textosNovedades.titulo}</h2>
     </div>
 
     <NovedadesBox />
 
     <div class="universidades scroll-reveal">
-        <h2>¿Querés saber si tu Universidad esta participando?</h2>
+        <h2>{textosNovedades.tituloUniversidades}</h2>
         <div class="container-universidades">
-            <div class="container-universidad">
-                <img src="./Universidad1.png" alt="" />
-                <h3>Universidad <br />Champagnat</h3>
-            </div>
-            <div class="container-universidad">
-                <img src="./Universidad2.png" alt="" />
-                <h3>UNCuyo</h3>
-            </div>
-            <div class="container-universidad">
-                <img src="./Universidad3.png" alt="" />
-                <h3>
-                    Universidad <br />
-                    Universitario <br />
-                    de Ciencias <br />
-                    Empresariales
-                </h3>
-            </div>
-            <div class="container-universidad">
-                <img src="./Universidad4.png" alt="" />
-                <h3>
-                    Universidad <br />
-                    del <br />
-                    Aconcagua
-                </h3>
-            </div>
-            <div class="container-universidad">
-                <img src="./Universidad5.png" alt="" />
-                <h3>
-                    Universidad <br />
-                    Juan Agustín <br />
-                    Maza
-                </h3>
-            </div>
-            <div class="container-universidad">
-                <img src="./Universidad6.png" alt="" />
-                <h3>
-                    Universidad <br />
-                    Siglo 21
-                </h3>
-            </div>
-            <div class="container-universidad">
-                <img src="./Universidad7.png" alt="" />
-                <h3>
-                    Universidad <br />
-                    Católica <br />
-                    Santiago del <br />
-                    Estero
-                </h3>
-            </div>
-            <div class="container-universidad">
-                <img src="./Universidad8.png" alt="" />
-                <h3>
-                    Instituto <br />
-                    Tecnológico <br />
-                    Universitario
-                </h3>
-            </div>
+            {universidades.map((universidad) => (
+                <div class="container-universidad">
+                    <img
+                        src={universidad.imagen}
+                        alt={universidad.textoAlternativo}
+                    />
+                    <h3>{universidad.nombre}</h3>
+                </div>
+            ))}
         </div>
     </div>
 </section>
-
-
 
 <style>
     .titulo h2 {
@@ -117,6 +68,7 @@ import NovedadesBox from "../components/NovedadesBox.astro";
     }
     .container-universidad h3 {
         font-size: 16px;
+        white-space: pre-line;
     }
 
     @media (min-width: 641px) and (max-width: 1024px) {
@@ -126,7 +78,10 @@ import NovedadesBox from "../components/NovedadesBox.astro";
         }
 
         .container-universidades {
-            grid-template-columns: repeat(auto-fit, minmax(min(100%, 130px), 1fr));
+            grid-template-columns: repeat(
+                auto-fit,
+                minmax(min(100%, 130px), 1fr)
+            );
             gap: 24px 16px;
         }
 
